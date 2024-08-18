@@ -37,7 +37,7 @@
         }
     </style>
 </head>
-<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block'; document.getElementById('print-remark').textContent = 'Printed version - ' + new Date().toLocaleDateString() + ' - See the most recent version at fedorivachev.github.io';">
+<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block';">
 
 <div id="toggle-button" onclick="toggleLanguage()">Chinese</div>
 
@@ -107,9 +107,8 @@
 * Languages: English (C2, IELTS 7.5), Chinese (B2, HSK3 295/300), Russian (native)
 * Holder of the Hong Kong ID card, allowing right to abode without any visa restrictions.
 
-<!-- Print Remark -->
 <div id="print-remark">
-    <!-- This will be populated dynamically on page load -->
+    Printed version - [current date] - See the most recent version at fedorivachev.github.io
 </div>
 
 </div>
@@ -177,7 +176,7 @@
 
 <!-- Print Remark -->
 <div id="print-remark">
-    <!-- This will be populated dynamically on page load -->
+    Printed version - [current date] - See the most recent version at fedorivachev.github.io
 </div>
 
 </div>
@@ -197,9 +196,6 @@
             toggleButton.innerHTML = 'English';
         }
     }
-
-    // Set the print remark date
-    document.getElementById('print-remark').textContent = 'Printed version - ' + new Date().toLocaleDateString() + ' - See the most recent version at fedorivachev.github.io';
 </script>
 
 </body>
