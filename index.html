@@ -27,16 +27,7 @@
             }
             #print-remark {
                 display: block;
-                text-align: center;
-                margin-top: 50px;
-                font-size: 12px;
-                color: grey;
-            }
-            body::after {
-                content: "Printed version - " attr(data-print-date) " - See the most recent version at fedorivachev.github.io";
-                display: block;
-                text-align: center;
-                margin-top: 50px;
+                margin-top: 20px;
                 font-size: 12px;
                 color: grey;
             }
@@ -46,7 +37,7 @@
         }
     </style>
 </head>
-<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block'; document.body.setAttribute('data-print-date', new Date().toLocaleDateString());">
+<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block'; document.getElementById('print-remark').textContent = 'Printed version - ' + new Date().toLocaleDateString() + ' - See the most recent version at fedorivachev.github.io';">
 
 <div id="toggle-button" onclick="toggleLanguage()">Chinese</div>
 
@@ -115,6 +106,12 @@
 
 * Languages: English (C2, IELTS 7.5), Chinese (B2, HSK3 295/300), Russian (native)
 * Holder of the Hong Kong ID card, allowing right to abode without any visa restrictions.
+
+<!-- Print Remark -->
+<div id="print-remark">
+    <!-- This will be populated dynamically on page load -->
+</div>
+
 </div>
 
 <!-- Chinese Version -->
@@ -177,6 +174,12 @@
 
 * 语言：英语（C2，雅思7.5），中文（B2，HSK3 295/300），俄语（母语）
 * 持有香港身份证，享有无需签证限制的居留权。
+
+<!-- Print Remark -->
+<div id="print-remark">
+    <!-- This will be populated dynamically on page load -->
+</div>
+
 </div>
 
 <script>
@@ -194,6 +197,9 @@
             toggleButton.innerHTML = 'English';
         }
     }
+
+    // Set the print remark date
+    document.getElementById('print-remark').textContent = 'Printed version - ' + new Date().toLocaleDateString() + ' - See the most recent version at fedorivachev.github.io';
 </script>
 
 </body>
