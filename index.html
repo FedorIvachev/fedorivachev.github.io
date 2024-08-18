@@ -21,6 +21,11 @@
             border-radius: 5px;
             z-index: 1000;
         }
+        @media print {
+            #toggle-button {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block';">
