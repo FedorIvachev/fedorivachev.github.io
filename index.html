@@ -32,13 +32,21 @@
                 font-size: 12px;
                 color: grey;
             }
+            body::after {
+                content: "Printed version - " attr(data-print-date) " - See the most recent version at fedorivachev.github.io";
+                display: block;
+                text-align: center;
+                margin-top: 50px;
+                font-size: 12px;
+                color: grey;
+            }
         }
         #print-remark {
             display: none;
         }
     </style>
 </head>
-<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block';">
+<body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block'; document.body.setAttribute('data-print-date', new Date().toLocaleDateString());">
 
 <div id="toggle-button" onclick="toggleLanguage()">Chinese</div>
 
@@ -171,11 +179,6 @@
 * 持有香港身份证，享有无需签证限制的居留权。
 </div>
 
-<!-- Print Remark -->
-<div id="print-remark">
-    Printed version - <span id="print-date"></span> - See the most recent version at fedorivachev.github.io
-</div>
-
 <script>
     function toggleLanguage() {
         var eng = document.getElementById('english-version');
@@ -191,9 +194,6 @@
             toggleButton.innerHTML = 'English';
         }
     }
-
-    // Set the print date
-    document.getElementById('print-date').textContent = new Date().toLocaleDateString();
 </script>
 
 </body>
