@@ -10,33 +10,32 @@
         body { line-height:1.3; margin:auto; padding:3px; max-width:1024px; display:none; font-family:"Segoe UI", Arial; }
         h1  { font-size:200%; padding:16px; border:1px solid lightgrey; background:#f0f0f0; }
         h2  { border-bottom:1px solid grey; padding:2px }
-        #menu-container {
+        #toggle-button,
+        #download-button {
             position: fixed;
-            top: 10px;
             right: 10px;
             padding: 10px;
             background: #007bff;
             color: white;
-            border-radius: 5px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-        #menu-container button {
-            margin-bottom: 5px;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
             cursor: pointer;
             border-radius: 5px;
-            font-size: 14px;
+            z-index: 1000;
+            width: 120px; /* Make both buttons the same width */
+            text-align: center;
+            border: none;
+        }
+        #toggle-button {
+            top: 10px;
+        }
+        #download-button {
+            top: 60px; /* Position the download button below the toggle button */
         }
         #print-remark {
             display: none;
         }
         @media print {
-            #menu-container {
+            #toggle-button,
+            #download-button {
                 display: none;
             }
             #print-remark {
@@ -50,10 +49,8 @@
 </head>
 <body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block';">
 
-<div id="menu-container">
-    <button id="toggle-button" onclick="toggleLanguage()">Chinese</button>
-    <button id="download-button" onclick="downloadPDF()">Download PDF</button>
-</div>
+<button id="toggle-button" onclick="toggleLanguage()">Chinese</button>
+<button id="download-button" onclick="downloadPDF()">Download PDF</button>
 
 <img style="float:right;border-radius:50%;width:60px;padding:6px" src="avatar-man.jpg" />
 <span style="float:right;padding:6px"> 
