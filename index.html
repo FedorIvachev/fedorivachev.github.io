@@ -10,22 +10,33 @@
         body { line-height:1.3; margin:auto; padding:3px; max-width:1024px; display:none; font-family:"Segoe UI", Arial; }
         h1  { font-size:200%; padding:16px; border:1px solid lightgrey; background:#f0f0f0; }
         h2  { border-bottom:1px solid grey; padding:2px }
-        #toggle-button {
+        #menu-container {
             position: fixed;
             top: 10px;
             right: 10px;
             padding: 10px;
             background: #007bff;
             color: white;
-            cursor: pointer;
             border-radius: 5px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+        #menu-container button {
+            margin-bottom: 5px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
         }
         #print-remark {
             display: none;
         }
         @media print {
-            #toggle-button {
+            #menu-container {
                 display: none;
             }
             #print-remark {
@@ -39,7 +50,10 @@
 </head>
 <body onload="document.body.innerHTML=md.html(document.body.innerHTML); document.body.style.display='block';">
 
-<div id="toggle-button" onclick="toggleLanguage()">Chinese</div>
+<div id="menu-container">
+    <button id="toggle-button" onclick="toggleLanguage()">Chinese</button>
+    <button id="download-button" onclick="downloadPDF()">Download PDF</button>
+</div>
 
 <img style="float:right;border-radius:50%;width:60px;padding:6px" src="avatar-man.jpg" />
 <span style="float:right;padding:6px"> 
@@ -48,7 +62,7 @@
 
 <!-- English Version -->
 <div id="english-version">
-# Ivachev Fedor (费杰)
+# Ivachev Fedor (费杰) 
 
 ## Executive Summary
 
@@ -184,19 +198,31 @@
 </div>
 
 <script>
+    var isEnglish = true;
+
     function toggleLanguage() {
         var eng = document.getElementById('english-version');
         var chi = document.getElementById('chinese-version');
         var toggleButton = document.getElementById('toggle-button');
-        if (eng.style.display === 'none') {
-            eng.style.display = 'block';
-            chi.style.display = 'none';
-            toggleButton.innerHTML = 'Chinese';
-        } else {
+        
+        if (isEnglish) {
             eng.style.display = 'none';
             chi.style.display = 'block';
             toggleButton.innerHTML = 'English';
+            isEnglish = false;
+        } else {
+            eng.style.display = 'block';
+            chi.style.display = 'none';
+            toggleButton.innerHTML = 'Chinese';
+            isEnglish = true;
         }
+    }
+
+    function downloadPDF() {
+        var pdfUrl = isEnglish
+            ? 'https://github.com/FedorIvachev/fedorivachev.github.io/blob/master/PDFs/CV-Ivachev%20Fedor%20%E8%B4%B9%E6%9D%B0-English.pdf?raw=true'
+            : 'https://github.com/FedorIvachev/fedorivachev.github.io/blob/master/PDFs/CV-%E8%B4%B9%E6%9D%B0-%E4%B8%AD%E6%96%87.pdf?raw=true';
+        window.location.href = pdfUrl;
     }
 </script>
 
